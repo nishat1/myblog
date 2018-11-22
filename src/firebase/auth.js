@@ -1,28 +1,32 @@
 // File deals with Firebase API and React interacts with this file
 
-import { auth } from './firebase';
+//------------------------------------------------
+// Exporting doesn't allow then and catch methods to work
+//-------------------------------------------------
 
-// Sign Up
-export const doCreateUserWithEmailAndPassword = (email, password) => {
-    auth.createUserWithEmailAndPassword(email, password);
-}
+// import { auth } from './firebase';
 
-// Sign In
-export const doSignInWithEmailAndPassword = (email, password) => {
-    auth.signInWithEmailAndPassword(email, password);
-}
+// // Sign Up
+// export const doCreateUserWithEmailAndPassword = (email, password) => {
+//     auth.createUserWithEmailAndPassword(email, password);
+// }
 
-// Sign Out
-export const doSignOut = () => {
-    auth.signOut();
-}
+// // Sign In
+// export const doSignInWithEmailAndPassword = (email, password) => {
+//     auth.signInWithEmailAndPassword(email, password);
+// }
 
-// Password Reset
-export const doPasswordReset = (email) => {
-    auth.sendPasswordResetEmail(email);
-}
+// // Sign Out
+// export const doSignOut = () => {
+//     auth.signOut();
+// }
 
-// Password Change
-export const doPasswordChange = (password) => {
-    auth.currentUser.updatePassword(password);
-}
+// // Password Reset
+// export const doPasswordReset = (email) => {
+//     auth.sendPasswordResetEmail(email);
+// }
+
+// // Password Change
+// export const doPasswordChange = (password) => {
+//     auth.currentUser.updatePassword(password);
+// }

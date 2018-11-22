@@ -6,11 +6,11 @@ import {
 import { auth } from '../firebase';
 import * as routes from '../constants/routes';
 
-const SignUpPage = () => {
+const SignUpPage = ( {history} ) => {
     return (
         <div>
             <h1>Sign Up Page</h1>
-            <SignUpForm />
+            <SignUpForm history={history} />
         </div>
     );
 };
@@ -32,20 +32,28 @@ class SignUpForm extends Component {
     state = {...INITIAL_STATE};
 
     onSubmit = (event) => {
+
         const {
             username,
             email,
             passwordOne
         } = this.state;
 
-        auth.doCreateUserWithEmailAndPassword(email, passwordOne)
-            .then(authUser => {
-                this.setState({...INITIAL_STATE});
-            })
-            .catch(error => {
-                this.setState(byPropKey('error', error));
-            });
-        
+        // history object from props is a default firebase object
+        // routes can be pushed to history for redirects
+        const {
+            history,
+        } = this.props;
+
+        // create a user using the auth object and direct user to home page
+        // otherwise output any error thrown by firebase
+        auth.createUserWithEmailAndPassword(email, passwordOne).then(authUser => {
+            this.setState({...INITIAL_STATE});
+            history.push(routes.HOME);
+        }).catch(error => {
+            this.setState(byPropKey('error', error));
+        });
+
         // prevents browser from reloading. 
         event.preventDefault();
     }
@@ -122,7 +130,7 @@ const SignUpLink = () => {
     );
 }
 
-export default SignUpPage;
+export default withRouter(SignUpPage);
 
 export {
     SignUpForm,
