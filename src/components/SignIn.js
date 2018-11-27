@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 import { SignUpLink } from './SignUp';
 import { auth } from '../firebase';
 import * as routes from '../constants/routes';
-import { initializeApp } from '../../node_modules/firebase';
 
 const SignInPage = ({history}) => {
     return (
