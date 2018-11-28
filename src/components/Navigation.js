@@ -3,6 +3,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import * as routes from '../constants/routes';
 
+import SignOutButton from './SignOut';
+
 // material UI imports
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -44,6 +46,7 @@ const Navigation = (props) => {
                     <Button color="inherit"><Link to={routes.LANDING}>Landing</Link></Button>
                     <Button color="inherit"><Link to={routes.HOME}>Home</Link></Button>
                     <Button color="inherit"><Link to={routes.ACCOUNT}>Account</Link></Button>
+                    <SignOutButton />
                 </Toolbar>
             </AppBar>
         </div>
